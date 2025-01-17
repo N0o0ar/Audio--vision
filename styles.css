@@ -1,0 +1,297 @@
+@font-face {
+    font-family: 'CoFo Sans-Bold';
+    src: url('fonts/CoFoSans-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Sligoil-Micro';
+    src: url('fonts/Sligoil-Micro.otf') format('opentype');
+}
+
+        
+@media (max-width: 768px) {
+
+    
+
+    .left-column h1 {
+        font-size: 3rem; /* Réduit la taille du titre sur les petits écrans */
+    }
+
+    .left-column h2 {
+        font-size: 1rem; /* Réduit la taille du titre "Sommaire" */
+    }
+
+    .left-column ul li {
+        font-size: 0.9rem; /* Texte plus petit pour le sommaire */
+    }
+}
+html 
+{
+  --res: calc(0.01*10vmin);
+   }
+/************************** IMPORT  *****************************/ 
+
+.container {
+    display: grid;
+    grid-template-columns: 19% 26% 55%; /* Trois colonnes avec largeur de 25%, 25%, et 50% */
+    height: 100vh; /* Hauteur pleine */
+}
+
+/* Colonne gauche (sommaire) */
+.left-column {
+    padding: 1rem;
+    font-family: 'Sligoil-Micro', sans-serif;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribue les éléments avec espace entre eux */
+    height: 100vh; /* Hauteur totale de la colonne */
+    overflow: hidden; /* Empêche tout débordement visible */
+    box-sizing: border-box;
+}
+
+.left-column h1 {
+    font-family: 'Sligoil-Micro', sans-serif;
+    font-size: calc(90*var(--res));
+    line-height: 80%;
+    margin: 0;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-weight: lighter;
+}
+
+.left-column h2 {
+    margin-top: 0;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: lighter;
+    line-height: 1.4vw;
+}
+
+.left-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: lighter;
+}
+
+.left-column ul li {
+    margin-bottom: 1vw;
+    font-size: calc(18*var(--res));
+    font-weight: lighter;
+    line-height: 2.1vh;
+}
+
+.left-column .bibliography {
+    font-size: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    align-self: flex-start;
+    font-weight: lighter;
+}
+
+body {
+    display: flex;
+    margin: 0vw;
+    padding: 0vw;
+    font-family: 'CoFo Sans-Bold', sans-serif;
+}
+
+
+.colonne1 {
+    width: 19%;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.colonne1 h2 {
+    font-size: calc(27*var(--res));;
+}
+
+.colonne2 {
+    width: 26%; /* Colonne de droite pour le texte principal */
+    padding: 10vw;
+    box-sizing: border-box;
+    overflow-y: auto;
+    text-align: left;
+    position: relative;
+}
+
+
+.colonne3 {
+  
+    line-height: 160%;
+    width: 55%;
+    font-size: calc(17*var(--res));
+    margin: 3rem 0 0;
+    padding: 1vw;
+    box-sizing: border-box;
+    overflow-y: auto;
+    text-align: left;
+    z-index: 2;
+}
+.colonne3 p:not(.blockquote) {
+    text-indent: 4vw;
+    margin-bottom: 3rem;
+}
+
+.colonne3 h2 {
+ 
+    font-family: 'Sligoil-Micro', sans-serif;
+    font-size: calc(62*var(--res));
+    line-height: 120%;
+    font-weight: lighter;
+    margin-bottom: 4vw;
+    margin-top: 4vw;
+}
+
+.fixe {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Répartir sommaire en haut et bibliographie en bas */
+    height: 100%; /* La hauteur totale de l'écran */
+    width: 100%; /* S'assurer que l'élément prend toute la largeur */
+}
+.bibliography {
+    margin-top: auto; /* Forcer la bibliographie à rester en bas */
+    font-size: 1vw;
+    padding-top: 10px;
+    font-weight: lighter;
+}
+.sommaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrer verticalement */
+    align-items: flex-start; /* Alignement gauche */
+    flex-grow: 1; /* Prend tout l'espace disponible sauf celui réservé à la bibliographie */
+    line-height: 2rem;
+    flex-grow: 1; /* Prend tout l'espace disponible entre le titre et la bibliographie */
+    overflow-y: auto; /* Ajoute un scroll si nécessaire pour éviter que la bibliographie disparaisse */
+    max-height: calc(100vh - 10rem);
+    z-index: 100;
+}
+.sommaire a {
+    color: black; /* Assure que les liens sont en noir */
+    text-decoration: none; /* Supprime le soulignement */
+}
+
+.sommaire a:hover {
+    color: black; /* Garde la couleur noire même au survol */
+    text-decoration: none; /* Assure qu'aucun soulignement ne réapparaisse au survol */
+}
+
+.definition {
+    position: absolute; /* Positionnement dynamique */
+    left: 46%; /* Décalage horizontal pour ne pas coller au bord */
+    max-width: 80%; /* Évite que la définition s'étale trop */
+    padding: 1rem;
+    font-size: 0.7vw;
+    overflow-wrap: break-word; /* Assure que le texte reste dans les limites */
+    z-index: 10; /* S'assure que la définition passe par-dessus les autres contenus */
+    width: 38%;
+    margin-top: 1vw;
+    
+}
+.blockquote {
+    margin-left: 4vx; /* Décale le paragraphe vers la droite */
+    padding-left: 8%; /* Ajoute un espace intérieur */
+}
+/* Style des carrés noirs */
+.black-square {
+    display: inline-block;
+    width: 1em; /* Même taille que les caractères */
+    height: 1em; /* Même taille que les caractères */
+    background-color: black;
+    cursor: pointer;
+    margin: 0 0.2em; /* Espacement pour ne pas coller au texte */
+    position: relative;
+}
+
+/* Conteneur de l'image (caché par défaut) */
+.image-tooltip {
+    position: absolute;
+    display: none;
+    background-color: white;
+    border: 0.01vw solid #000000;
+    padding: 10px;
+    z-index: 1000;
+    flex-direction: column; /* Les images et descriptions seront empilées verticalement */
+    text-align: left; /* Alignement des descriptions */
+    justify-content: center;
+    word-wrap: break-word; /* Permet de gérer les longues descriptions */
+    align-items: center; /* Centre horizontalement le contenu */
+    justify-content: center; /* Centre verticalement si nécessaire */
+    overflow: hidden; /* Cache tout débordement si jamais il se produit */
+}
+
+.image-tooltip img {
+    max-width: 20vw;
+    max-height: 20vw;
+    margin-bottom: 10px; /* Espacement entre les images */
+}
+
+.image-tooltip .description {
+    font-size: calc(12*var(--res)); /* Taille adaptée à votre design */
+    color: #333;
+    margin-top: 5px; /* Espacement entre les descriptions */
+}
+
+.vimeo {
+    position: relative;  /* Important pour le positionnement absolu de l'iframe */
+    width: 100%;  /* Prend toute la largeur de son conteneur parent */
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    background: #ffffff; /* Fond blanc pour la vidéo */
+    display: flex;  /* Utilisation de Flexbox pour le centrage */
+    justify-content: center;  /* Centrer horizontalement */
+    align-items: center;  /* Centrer verticalement */
+}
+
+.vimeo iframe {
+    position: relative;  /* Permet à l'iframe de remplir le conteneur */
+    top: 0;
+    left: 0;
+    width: 30vw;  /* Largeur à 50% du conteneur */
+    height: 30vw;  /* Hauteur à 50% du conteneur */
+    border: none;  /* Supprime la bordure de l'iframe */
+}
+
+.youtube {
+    position: relative;  /* Important pour le positionnement absolu de l'iframe */
+    width: 100%;  /* Prend toute la largeur de son conteneur parent */
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    background: #ffffff; /* Fond blanc pour la vidéo */
+    display: flex;  /* Utilisation de Flexbox pour le centrage */
+    justify-content: center;  /* Centrer horizontalement */
+    align-items: center;  /* Centrer verticalement */
+}
+
+.youtube iframe {
+    position: relative;  /* Permet à l'iframe de remplir le conteneur */
+    top: 0;
+    left: 0;
+    width: 50%;  /* Largeur à 50% du conteneur */
+    height: 50%;  /* Hauteur à 50% du conteneur */
+    border: none;  /* Supprime la bordure de l'iframe */
+}
+
+
+.colonne {
+    position: relative;  /* Assure un bon alignement des éléments */
+    z-index: 1;  /* Gère l'empilement des éléments (si nécessaire) */
+    pointer-events: auto;  /* Permet les interactions utilisateur */
+}
+
+.dotted-link {
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    border-bottom: 0.15vw dashed; /* Ajoute un soulignement en forme de petits traits */
+    color: inherit; /* Garde la même couleur que le texte environnant */
+}
+
+.dotted-link:hover {
+    color: rgb(0, 0, 0); /* Change la couleur au survol */
+    border-bottom-color: rgb(0, 0, 0); /* Change la couleur de la bordure au survol */
+}
+
